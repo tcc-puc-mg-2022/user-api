@@ -43,9 +43,11 @@ public class UserController extends AbstractControllerSupport {
     private UserService service;
 
     public UserController(@NonNull ModelMapper modelMapper,
-                          @NonNull UserRepository repository) {
+                          @NonNull UserRepository repository,
+                          @NonNull ProfileRepository profileRepository) {
         super(modelMapper);
         this.repository = repository;
+        this.profileRepository = profileRepository;
     }
 
     @ApiOperation(value = "Recuperar usuário por identificador", response = UserReponseDTO.class)
