@@ -11,11 +11,11 @@
     </parent>
 
     <groupId>br.com.pucminas.tcc</groupId>
-    <artifactId>ms-autenticacao</artifactId>
+    <artifactId>user-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>ms-autenticacao</name>
-    <description>Microserviço de Autenticação</description>
+    <name>user-api</name>
+    <description>API de Usuários</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
