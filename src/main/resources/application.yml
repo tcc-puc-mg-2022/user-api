@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: @project.artifactId@
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        generate_statistics: true
+        format_sql: true
+        default_schema: ms_autenticacao
+    open-in-view: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/msautenticacao?currentSchema=ms_autenticacao
+    username: user_autenticacao_app
+    password: user_autenticacao_app
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 300000
+  flyway:
+    enabled: true
+    table: FLYWAY_SCHEMA_HISTORY
+    url: ${spring.datasource.url}
+    user: user_autenticacao
+    password: user_autenticacao
+    placeholders:
+      SCHEMA_NAME: ms_autenticacao
+      APP_USER: user_autenticacao_app
+#    clean-on-validation-error: on
+#    clean-disabled: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+cors:
+  allowedOrigins: '*'
+
+server:
+  address: 0.0.0.0
+  tomcat:
+    max-http-form-post-size: 100MB
+
+#LOGGER
+logging:
+  file:
+    name: @project.artifactId@.log
+    path: @project.basedir@
+  level:
+    org.springframework.web: INFO
+    org.hibernate: INFO
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type: TRACE
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+#    org.hibernate.stat: DEBUG
