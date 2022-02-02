@@ -34,6 +34,13 @@ spring:
       APP_USER: user_autenticacao_app
 #    clean-on-validation-error: on
 #    clean-disabled: false
+#  security:
+#    oauth2:
+#      resourceserver:
+#        opaque:
+#          introspection-uri: http://localhost:8083/auth/realms/resrte/protocol/openid-connect/token/introspect
+#          introspection-client-id: user-api
+#          introspection-client-secret: 540a35b4-b875-47c9-bdd4-598c38eb155a
 management:
   endpoints:
     web:
@@ -44,9 +51,11 @@ cors:
   allowedOrigins: '*'
 
 server:
+  port: 8081
   address: 0.0.0.0
   tomcat:
     max-http-form-post-size: 100MB
+    connection-timeout: 6000
 
 #LOGGER
 logging:
@@ -60,3 +69,12 @@ logging:
 #    org.hibernate.type: TRACE
 #    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 #    org.hibernate.stat: DEBUG
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: pucminas
+  resource: admin-app
+  public-client: true
+  use-resource-role-mappings: true
+  credentials:
+    secret: eFbr2PlVXUMoAmEXJmNUo7djw4FoHvXf

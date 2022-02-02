@@ -4,11 +4,11 @@
  */
 package br.com.pucminas.tcc.ms.user.web;
 
-import br.com.pucminas.tcc.ms.user.commons.AbstractControllerSupport;
 import br.com.pucminas.tcc.ms.user.ProfileRepository;
 import br.com.pucminas.tcc.ms.user.User;
 import br.com.pucminas.tcc.ms.user.UserRepository;
 import br.com.pucminas.tcc.ms.user.UserService;
+import br.com.pucminas.tcc.ms.user.commons.AbstractControllerSupport;
 import br.com.pucminas.tcc.ms.user.web.dto.UserReponseDTO;
 import br.com.pucminas.tcc.ms.user.web.dto.UserRequestDTO;
 import io.swagger.annotations.Api;
@@ -62,12 +62,12 @@ public class UserController extends AbstractControllerSupport {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserReponseDTO create(@Valid @RequestBody UserRequestDTO dto) {
-        final var profile = profileRepository.findById(dto.getProfileId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Perfil informado não " +
-                        "encontrado"));
-        final var user = modelMapper.map(dto, User.class);
-        user.setProfile(profile);
-        return modelMapper.map(service.save(user), UserReponseDTO.class);
+
+        final var profile = profileRepository.findById(dto.getProfileId()).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Perfil informado não " + "encontrado"));
+        final var userEntity = modelMapper.map(dto, User.class);
+        userEntity.setProfile(profile);
+        return modelMapper.map(service.save(userEntity), UserReponseDTO.class);
     }
 
     @ApiOperation(value = "Atualizar usuário", response = UserReponseDTO.class)
