@@ -11,15 +11,15 @@ spring:
       ddl-auto: validate
     properties:
       hibernate:
-        generate_statistics: true
+        generate_statistics: false
         format_sql: true
-        default_schema: ms_autenticacao
+        default_schema: autenticacao
     open-in-view: false
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/msautenticacao?currentSchema=ms_autenticacao
-    username: user_autenticacao_app
-    password: user_autenticacao_app
+    url: jdbc:postgresql://localhost:5432/dbautenticacao?currentSchema=autenticacao
+    username: user_autenticacao
+    password: user_autenticacao
     hikari:
       maximum-pool-size: 10
       max-lifetime: 300000
@@ -27,20 +27,14 @@ spring:
     enabled: true
     table: FLYWAY_SCHEMA_HISTORY
     url: ${spring.datasource.url}
-    user: user_autenticacao
-    password: user_autenticacao
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
     placeholders:
-      SCHEMA_NAME: ms_autenticacao
-      APP_USER: user_autenticacao_app
+      SCHEMA_NAME: autenticacao
+      APP_USER: ${spring.datasource.username}
 #    clean-on-validation-error: on
 #    clean-disabled: false
-#  security:
-#    oauth2:
-#      resourceserver:
-#        opaque:
-#          introspection-uri: http://localhost:8083/auth/realms/resrte/protocol/openid-connect/token/introspect
-#          introspection-client-id: user-api
-#          introspection-client-secret: 540a35b4-b875-47c9-bdd4-598c38eb155a
+
 management:
   endpoints:
     web:
@@ -69,6 +63,8 @@ logging:
 #    org.hibernate.type: TRACE
 #    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 #    org.hibernate.stat: DEBUG
+#    org.flywaydb: TRACE
+#    org.flywaydb.core.internal.dbsupport.SqlScript: TRACE
 
 keycloak:
   auth-server-url: http://localhost:8080/auth

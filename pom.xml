@@ -181,6 +181,11 @@
             <url>https://github.com/nelsoncastro</url>
             <id>npc</id>
         </developer>
+        <developer>
+            <email>ueverton@gmail.com</email>
+            <name>Ueverton Leomir</name>
+            <id>ul</id>
+        </developer>
     </developers>
 
 </project>
