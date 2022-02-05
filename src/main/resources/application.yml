@@ -17,7 +17,7 @@ spring:
     open-in-view: false
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/dbautenticacao?currentSchema=autenticacao
+    url: jdbc:postgresql://dbuser:7432/dbautenticacao?currentSchema=autenticacao
     username: user_autenticacao
     password: user_autenticacao
     hikari:
@@ -67,7 +67,7 @@ logging:
 #    org.flywaydb.core.internal.dbsupport.SqlScript: TRACE
 
 keycloak:
-  auth-server-url: http://localhost:8080/auth
+  auth-server-url: http://srvkeycloak:8080/auth
   realm: pucminas
   resource: admin-app
   public-client: true
