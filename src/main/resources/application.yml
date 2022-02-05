@@ -67,10 +67,10 @@ logging:
 #    org.flywaydb.core.internal.dbsupport.SqlScript: TRACE
 
 keycloak:
-  auth-server-url: http://srvkeycloak:8080/auth
+  auth-server-url: ${KCL_AUTH_URL}
   realm: pucminas
   resource: admin-app
   public-client: true
   use-resource-role-mappings: true
   credentials:
-    secret: eFbr2PlVXUMoAmEXJmNUo7djw4FoHvXf
+    secret: ${KCL_SECRET}
