@@ -63,7 +63,7 @@ public class SwaggerConfiguration {
                 .globalResponses(HttpMethod.DELETE, DEFAULT_ERRORS)
                 .apiInfo(new ApiInfoBuilder()
                         .title("API de Autenticação")
-                        .description("Essa API tem como finalidade a gestão de usuários e geração de token")
+                        .description("Essa API tem como finalidade a gestão de usuários")
                         .contact(new Contact("BOA SAUDE", "https://www.boasaude.com.br/", "codti@boasaude" +
                                 ".com.br"))
                         .version("1.0.0")
